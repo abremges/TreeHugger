@@ -1,6 +1,6 @@
 #!/usr/bin/env nextflow
 
-params.db = "${baseDir}/db/hug"
+params.db = "${baseDir}/db/gtdb"
 params.in = "${baseDir}/data/many"
 params.x = 'fasta'
 
@@ -25,7 +25,7 @@ process predict {
     set genome_id, "${genome_id}.genes.faa" into genes
 
     """
-    prodigal -a ${genome_id}.genes.faa -i ${genome_seq}
+    prodigal -m -p meta -a ${genome_id}.genes.faa -i ${genome_seq}
     """
 }
 
@@ -41,7 +41,7 @@ process search {
     set val("${hmm.baseName}"), genome_id, file(gene_seqs), "${genome_id}.${hmm.baseName}.tbl" into marker_genes
 
     """
-    hmmsearch --tblout ${genome_id}.${hmm.baseName}.tbl ${hmm} ${gene_seqs} > ${genome_id}.${hmm.baseName}.out
+    hmmsearch -E 1e-10 --tblout ${genome_id}.${hmm.baseName}.tbl ${hmm} ${gene_seqs} > ${genome_id}.${hmm.baseName}.out
     """
 }
 
@@ -79,7 +79,7 @@ process align {
     file "${marker_id}.aln" into raw_alignment
 
     """
-    cat ${marker_seqs} | muscle > ${marker_id}.aln
+    cat ${marker_seqs} | muscle -maxiters 8 > ${marker_id}.aln
     """
 }
 
@@ -99,6 +99,7 @@ process concat {
     """
 }
 
+// -keepseqs ?
 process trim {
     publishDir "output/3"
 
@@ -109,7 +110,7 @@ process trim {
     file "trimmed.aln" into trimmed_alignment
 
     """
-    trimal -in ${alignment} -gt 0.5 -keepseqs > trimmed.aln
+    trimal -in ${alignment} -automated1 > trimmed.aln
     """
 }
 
@@ -123,6 +124,6 @@ process build {
     file "tree.nwk" into tree
 
     """
-    fasttree ${alignment} > tree.nwk
+    fasttree -lg -gamma ${alignment} > tree.nwk
     """
 }
