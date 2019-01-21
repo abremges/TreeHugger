@@ -59,9 +59,9 @@ process extract {
     grep -v "^#" ${tblout} | awk 'FNR == 1 {print \$1}' > gene_id
     if [ -s gene_id ]
     then
-      seqkit grep -f gene_id ${gene_seqs} | seqkit replace -p '.+' -r ${genome_id} > ${genome_id}.${marker_id}.faa
+      seqkit grep -f gene_id ${gene_seqs} | seqkit replace -p '.+' -r "${genome_id} ${marker_id}" > ${genome_id}.${marker_id}.faa
     else
-      printf ">${genome_id}\nX\n" > ${genome_id}.${marker_id}.faa
+      printf ">${genome_id} ${marker_id}\nX\n" > ${genome_id}.${marker_id}.faa
     fi
     """
 }
