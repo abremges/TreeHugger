@@ -83,11 +83,13 @@ process align {
     """
 }
 
+raw_alignment.toSortedList( { a, b -> a.baseName <=> b.baseName } ).set{ alignment_blocks }
+
 process concat {
     publishDir "output/3"
 
     input:
-    file alignment_files from raw_alignment.toSortedList()
+    file alignment_files from alignment_blocks
 
     output:
     file "concat.aln" into concat_alignment
