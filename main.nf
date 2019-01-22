@@ -66,7 +66,7 @@ process extract {
     """
 }
 
-marker_genes_2.groupTuple(sort: true).set{ gene_blocks }
+marker_genes_2.groupTuple().set{ gene_blocks }
 
 process align {
     tag "${marker_id}"
