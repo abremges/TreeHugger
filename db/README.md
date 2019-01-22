@@ -1,9 +1,9 @@
+## Hug *et. al*
+
 Ribosomal proteins L2, L3, L4, L5, L6, L14, L15, L16, L18, L22, L24, S3, S8, S10, S17, and S19.
 
 - Hug, LA, Baker, BJ, Anantharaman, K, Brown, CT, Probst, AJ, Castelle, CJ, Butterfield, CN, Hernsdorf, AW, Amano, Y, Ise, K, Suzuki, Y, Dudek, N, Relman, DA, Finstad, KM, Amundson, R, Thomas, BC, Banfield, JF **(2016)**. A new view of the tree of life. *Nat Microbiol*, 1:16048. doi:[10.1038/nmicrobiol.2016.48](https://doi.org/10.1038/nmicrobiol.2016.48)
 - Hug, LA, Castelle, CJ, Wrighton, KC, Thomas, BC, Sharon, I, Frischkorn, KR, Williams, KH, Tringe, SG, Banfield, JF **(2013)**. Community genomic analyses constrain the distribution of metabolic traits across the Chloroflexi phylum and indicate roles in sediment carbon cycling. *Microbiome*, 1, 1:22. doi:[10.1186/2049-2618-1-22](https://dx.doi.org/10.1186/2049-2618-1-22)
-
-----
 
 Pfam search results, cross checked by looking at the *E. coli* ribosomal proteins in UniProtKB (which links back to Pfam):
 
@@ -25,3 +25,17 @@ Pfam search results, cross checked by looking at the *E. coli* ribosomal protein
 | S10 | https://www.uniprot.org/uniprot/P0A7R5 | https://pfam.xfam.org/family/PF00338 |
 | S17 | https://www.uniprot.org/uniprot/P0AG63 | https://pfam.xfam.org/family/PF00366 |
 | S19 | https://www.uniprot.org/uniprot/P0A7U3 | https://pfam.xfam.org/family/PF00203 |
+
+
+## PhyEco
+
+40 PhyEco markers for the group "all bacteria and archaea".
+
+- Wu, D, Jospin, G, Eisen, JA **(2013)**. Systematic identification of gene families for use as "markers" for phylogenetic and phylogeny-driven ecological studies of bacteria and archaea and their major subgroups. *PLOS ONE*, 8, 10:e77033. doi:[10.1371/journal.pone.0077033](https://dx.doi.org/10.1371/journal.pone.0077033)
+
+
+### GTDB (bac120 and arc122)
+
+Release 86 of the [Genome Taxonomy Database](http://gtdb.ecogenomic.org/).
+
+- Parks, DH, Chuvochina, M, Waite, DW, Rinke, C, Skarshewski, A, Chaumeil, PA, Hugenholtz, P **(2018)**. A standardized bacterial taxonomy based on genome phylogeny substantially revises the tree of life. *Nat. Biotechnol.*, 36, 10:996-1004. doi:[10.1038/nbt.4229](https://dx.doi.org/10.1038/nbt.4229)
