@@ -27,17 +27,11 @@ Pfam search results, cross checked by looking at the *E. coli* ribosomal protein
 | S19 | https://www.uniprot.org/uniprot/P0A7U3 | https://pfam.xfam.org/family/PF00203 |
 
 
-## PhyEco
-
-40 PhyEco markers for the group "all bacteria and archaea".
-
-- Wu, D, Jospin, G, Eisen, JA **(2013)**. Systematic identification of gene families for use as "markers" for phylogenetic and phylogeny-driven ecological studies of bacteria and archaea and their major subgroups. *PLOS ONE*, 8, 10:e77033. doi:[10.1371/journal.pone.0077033](https://dx.doi.org/10.1371/journal.pone.0077033)
-
-
 ## PhyloSift
 
-Set of 37 "elite" gene families previously identified as nearly universal and present in single-copy (subset of PhyEco, with three families excluded because they frequently have partial length homologs in some lineages).
+Set of 37 "elite" gene families previously identified as nearly universal and present in single-copy (subset of the 40 gene families described in Wu *et al.*, with three families excluded because they frequently have partial length homologs in some lineages).
 
+- Wu, D, Jospin, G, Eisen, JA **(2013)**. Systematic identification of gene families for use as "markers" for phylogenetic and phylogeny-driven ecological studies of bacteria and archaea and their major subgroups. *PLOS ONE*, 8, 10:e77033. doi:[10.1371/journal.pone.0077033](https://dx.doi.org/10.1371/journal.pone.0077033)
 - Darling, AE, Jospin, G, Lowe, E, Matsen, FA, Bik, HM, Eisen, JA (2014). PhyloSift: phylogenetic analysis of genomes and metagenomes. PeerJ, 2:e243. doi:[10.7717/peerj.243](https://dx.doi.org/10.7717/peerj.243)
 
 
