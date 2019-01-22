@@ -1,7 +1,20 @@
 #!/usr/bin/env nextflow
+treehugger_version = 'v0.2'
+println """
+▄▄▄█████▓ ██▀███  ▓█████ ▓█████  ██░ ██  █    ██   ▄████   ▄████ ▓█████  ██▀███
+▓  ██▒ ▓▒▓██ ▒ ██▒▓█   ▀ ▓█   ▀ ▓██░ ██▒ ██  ▓██▒ ██▒ ▀█▒ ██▒ ▀█▒▓█   ▀ ▓██ ▒ ██▒
+▒ ▓██░ ▒░▓██ ░▄█ ▒▒███   ▒███   ▒██▀▀██░▓██  ▒██░▒██░▄▄▄░▒██░▄▄▄░▒███   ▓██ ░▄█ ▒
+░ ▓██▓ ░ ▒██▀▀█▄  ▒▓█  ▄ ▒▓█  ▄ ░▓█ ░██ ▓▓█  ░██░░▓█  ██▓░▓█  ██▓▒▓█  ▄ ▒██▀▀█▄
+  ▒██▒ ░ ░██▓ ▒██▒░▒████▒░▒████▒░▓█▒░██▓▒▒█████▓ ░▒▓███▀▒░▒▓███▀▒░▒████▒░██▓ ▒██▒
+  ▒ ░░   ░ ▒▓ ░▒▓░░░ ▒░ ░░░ ▒░ ░ ▒ ░░▒░▒░▒▓▒ ▒ ▒  ░▒   ▒  ░▒   ▒ ░░ ▒░ ░░ ▒▓ ░▒▓░
+    ░      ░▒ ░ ▒░ ░ ░  ░ ░ ░  ░ ▒ ░▒░ ░░░▒░ ░ ░   ░   ░   ░   ░  ░ ░  ░  ░▒ ░ ▒░
+  ░        ░░   ░    ░      ░    ░  ░░ ░ ░░░ ░ ░ ░ ░   ░ ░ ░   ░    ░     ░░   ░
+            ░        ░  ░   ░  ░ ░  ░  ░   ░           ░       ░    ░  ░   ░
+                                                ${treehugger_version?:''}
+"""
 
-params.db = "${baseDir}/db/hug"
-params.in = "${baseDir}/data/one"
+params.db = "${baseDir}/db/gtdb_bac120"
+params.in = "${baseDir}/data/many"
 params.x = 'fasta'
 
 
@@ -25,8 +38,8 @@ process predict {
     set genome_id, "${genome_id}.genes.faa" into genes
 
     """
-    prodigal -m -p meta -a ${genome_id}.genes.faa -i ${genome_seq}
-    """
+    prodigal -a ${genome_id}.genes.faa -i ${genome_seq}
+    """ // -m -p meta ?
 }
 
 process search {
@@ -79,8 +92,8 @@ process align {
     file "${marker_id}.aln" into raw_alignment
 
     """
-    cat ${marker_seqs} | muscle -maxiters 8 > ${marker_id}.aln
-    """
+    cat ${marker_seqs} | muscle > ${marker_id}.aln
+    """ // -maxiters 8 ?
 }
 
 raw_alignment.toSortedList( { a, b -> a.baseName <=> b.baseName } ).set{ alignment_blocks }
@@ -99,7 +112,6 @@ process concat {
     """
 }
 
-// -keepseqs ?
 process trim {
     publishDir "output/3"
 
@@ -110,8 +122,8 @@ process trim {
     file "trimmed.aln" into trimmed_alignment
 
     """
-    trimal -in ${alignment} -automated1 > trimmed.aln
-    """
+    trimal -automated1 -in ${alignment} > trimmed.aln
+    """ // -keepseqs ?
 }
 
 process build {
