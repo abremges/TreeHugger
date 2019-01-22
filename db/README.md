@@ -32,7 +32,7 @@ Pfam search results, cross checked by looking at the *E. coli* ribosomal protein
 Set of 37 "elite" gene families previously identified as nearly universal and present in single-copy (subset of the 40 gene families described in Wu *et al.*, with three families excluded because they frequently have partial length homologs in some lineages).
 
 - Wu, D, Jospin, G, Eisen, JA **(2013)**. Systematic identification of gene families for use as "markers" for phylogenetic and phylogeny-driven ecological studies of bacteria and archaea and their major subgroups. *PLOS ONE*, 8, 10:e77033. doi:[10.1371/journal.pone.0077033](https://dx.doi.org/10.1371/journal.pone.0077033)
-- Darling, AE, Jospin, G, Lowe, E, Matsen, FA, Bik, HM, Eisen, JA (2014). PhyloSift: phylogenetic analysis of genomes and metagenomes. PeerJ, 2:e243. doi:[10.7717/peerj.243](https://dx.doi.org/10.7717/peerj.243)
+- Darling, AE, Jospin, G, Lowe, E, Matsen, FA, Bik, HM, Eisen, JA **(2014)**. PhyloSift: phylogenetic analysis of genomes and metagenomes. *PeerJ*, 2:e243. doi:[10.7717/peerj.243](https://dx.doi.org/10.7717/peerj.243)
 
 
 ## CheckM
@@ -47,4 +47,4 @@ Set of 43 phylogenetically informative marker genes consisting primarily of ribo
 Release 86 of the [Genome Taxonomy Database](http://gtdb.ecogenomic.org/).
 
 - Parks, DH, Chuvochina, M, Waite, DW, Rinke, C, Skarshewski, A, Chaumeil, PA, Hugenholtz, P **(2018)**. A standardized bacterial taxonomy based on genome phylogeny substantially revises the tree of life. *Nat. Biotechnol.*, 36, 10:996-1004. doi:[10.1038/nbt.4229](https://dx.doi.org/10.1038/nbt.4229)
-- Chaumeil, PA, Hugenholtz, P, Parks, DH **(2018)**. GTDB-Tk: A toolkit to classify genomes with the Genome Taxonomy Database. [https://github.com/Ecogenomics/GTDBTk](https://github.com/Ecogenomics/GTDBTk)
+- Chaumeil, PA, Hugenholtz, P, Parks, DH **(2018)**. GTDB-Tk: A toolkit to classify genomes with the Genome Taxonomy Database. *In preparation*. [https://github.com/Ecogenomics/GTDBTk](https://github.com/Ecogenomics/GTDBTk)
