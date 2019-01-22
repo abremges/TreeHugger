@@ -34,6 +34,13 @@ Pfam search results, cross checked by looking at the *E. coli* ribosomal protein
 - Wu, D, Jospin, G, Eisen, JA **(2013)**. Systematic identification of gene families for use as "markers" for phylogenetic and phylogeny-driven ecological studies of bacteria and archaea and their major subgroups. *PLOS ONE*, 8, 10:e77033. doi:[10.1371/journal.pone.0077033](https://dx.doi.org/10.1371/journal.pone.0077033)
 
 
+## CheckM
+
+Set of 43 phylogenetically informative marker genes consisting primarily of ribosomal proteins and RNA polymerase domains (and similar to the universal marker set used by PhyloSift).
+
+- Parks, DH, Imelfort, M, Skennerton, CT, Hugenholtz, P, Tyson, GW **(2015)**. CheckM: assessing the quality of microbial genomes recovered from isolates, single cells, and metagenomes. *Genome Res.*, 25, 7:1043-55. doi:[10.1101/gr.186072.114](https://dx.doi.org/10.1101/gr.186072.114)
+
+
 ## GTDB (bac120 and arc122)
 
 Release 86 of the [Genome Taxonomy Database](http://gtdb.ecogenomic.org/).
