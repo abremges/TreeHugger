@@ -39,3 +39,4 @@ Pfam search results, cross checked by looking at the *E. coli* ribosomal protein
 Release 86 of the [Genome Taxonomy Database](http://gtdb.ecogenomic.org/).
 
 - Parks, DH, Chuvochina, M, Waite, DW, Rinke, C, Skarshewski, A, Chaumeil, PA, Hugenholtz, P **(2018)**. A standardized bacterial taxonomy based on genome phylogeny substantially revises the tree of life. *Nat. Biotechnol.*, 36, 10:996-1004. doi:[10.1038/nbt.4229](https://dx.doi.org/10.1038/nbt.4229)
+- Chaumeil, PA, Hugenholtz, P, Parks, DH **(2018)**. GTDB-Tk: A toolkit to classify genomes with the Genome Taxonomy Database. [https://github.com/Ecogenomics/GTDBTk](https://github.com/Ecogenomics/GTDBTk)
