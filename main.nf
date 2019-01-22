@@ -1,8 +1,6 @@
 #!/usr/bin/env nextflow
 
-params.hmm_folder = "${baseDir}/db/hmms"
-params.marker_tsv = "${baseDir}/db/hug.tsv"
-
+params.db = "${baseDir}/db/hug"
 params.in = "${baseDir}/data/one"
 params.x = 'fasta'
 
