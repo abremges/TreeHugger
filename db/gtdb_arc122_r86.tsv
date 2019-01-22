@@ -1,0 +1,122 @@
+PF00368.13.hmm	PF00368.13	HMG-CoA_red	Hydroxymethylglutaryl-coenzyme A reductase
+PF00410.14.hmm	PF00410.14	Ribosomal_S8	Ribosomal protein S8
+PF00466.15.hmm	PF00466.15	Ribosomal_L10	Ribosomal protein L10
+PF00687.16.hmm	PF00687.16	Ribosomal_L1	Ribosomal protein L1p/L10e family
+PF00827.12.hmm	PF00827.12	Ribosomal_L15e	Ribosomal L15
+PF00900.15.hmm	PF00900.15	Ribosomal_S4e	Ribosomal family S4e
+PF01000.21.hmm	PF01000.21	RNA_pol_A_bac	RNA polymerase Rpb3/RpoA insert domain
+PF01015.13.hmm	PF01015.13	Ribosomal_S3Ae	Ribosomal S3Ae family
+PF01090.14.hmm	PF01090.14	Ribosomal_S19e	Ribosomal protein S19e
+PF01092.14.hmm	PF01092.14	Ribosomal_S6e	Ribosomal protein S6e
+PF01157.13.hmm	PF01157.13	Ribosomal_L21e	Ribosomal protein L21e
+PF01191.14.hmm	PF01191.14	RNA_pol_Rpb5_C	RNA polymerase Rpb5, C-terminal domain
+PF01194.12.hmm	PF01194.12	RNA_pol_N	RNA polymerases N / 8 kDa subunit
+PF01198.14.hmm	PF01198.14	Ribosomal_L31e	Ribosomal protein L31e
+PF01200.13.hmm	PF01200.13	Ribosomal_S28e	Ribosomal protein S28e
+PF01269.12.hmm	PF01269.12	Fibrillarin	Fibrillarin
+PF01280.15.hmm	PF01280.15	Ribosomal_L19e	Ribosomal protein L19e
+PF01282.14.hmm	PF01282.14	Ribosomal_S24e	Ribosomal protein S24e
+PF01496.14.hmm	PF01496.14	V_ATPase_I	V-type ATPase 116kDa subunit family
+PF01655.13.hmm	PF01655.13	Ribosomal_L32e	Ribosomal protein L32
+PF01798.13.hmm	PF01798.13	Nop	Putative snoRNA binding domain
+PF01864.12.hmm	PF01864.12	DUF46	Putative integral membrane protein DUF46
+PF01866.12.hmm	PF01866.12	Diphthamide_syn	Putative diphthamide synthesis protein
+PF01868.11.hmm	PF01868.11	UPF0086	Domain of unknown function UPF0086
+PF01984.15.hmm	PF01984.15	dsDNA_bind	Double-stranded DNA-binding domain
+PF01990.12.hmm	PF01990.12	ATP-synt_F	ATP synthase (F/14-kDa) subunit
+PF02006.11.hmm	PF02006.11	DUF137	Protein of unknown function DUF137
+PF02978.14.hmm	PF02978.14	SRP_SPB	Signal peptide binding domain
+PF03874.11.hmm	PF03874.11	RNA_pol_Rpb4	RNA polymerase Rpb4
+PF04019.7.hmm	PF04019.7	DUF359	Protein of unknown function (DUF359)
+PF04104.9.hmm	PF04104.9	DNA_primase_lrg	Eukaryotic and archaeal DNA primase, large subunit
+PF04919.7.hmm	PF04919.7	DUF655	Protein of unknown function (DUF655)
+PF07541.7.hmm	PF07541.7	EIF_2_alpha	Eukaryotic translation initiation factor 2 alpha subunit
+PF13656.1.hmm	PF13656.1	RNA_pol_L_2	RNA polymerase Rpb3/Rpb11 dimerisation domain
+PF13685.1.hmm	PF13685.1	Fe-ADH_2	Iron-containing alcohol dehydrogenase
+TIGR00021.hmm	TIGR00021	TIGR00021	rpiA: ribose 5-phosphate isomerase A
+TIGR00037.hmm	TIGR00037	TIGR00037	eIF_5A: translation elongation factor IF5A
+TIGR00042.hmm	TIGR00042	TIGR00042	TIGR00042: non-canonical purine NTP pyrophosphatase, RdgB/HAM1 family
+TIGR00064.hmm	TIGR00064	TIGR00064	ftsY: signal recognition particle-docking protein FtsY
+TIGR00111.hmm	TIGR00111	TIGR00111	pelota: mRNA surveillance protein pelota
+TIGR00134.hmm	TIGR00134	TIGR00134	gatE_arch: glutamyl-tRNA(Gln) amidotransferase, subunit E
+TIGR00240.hmm	TIGR00240	TIGR00240	ATCase_reg: aspartate carbamoyltransferase, regulatory subunit
+TIGR00264.hmm	TIGR00264	TIGR00264	TIGR00264: alpha-NAC homolog
+TIGR00270.hmm	TIGR00270	TIGR00270	TIGR00270: TIGR00270 family protein
+TIGR00279.hmm	TIGR00279	TIGR00279	uL16_euk_arch: ribosomal protein uL16
+TIGR00283.hmm	TIGR00283	TIGR00283	arch_pth2: peptidyl-tRNA hydrolase
+TIGR00291.hmm	TIGR00291	TIGR00291	RNA_SBDS: rRNA metabolism protein, SBDS family
+TIGR00293.hmm	TIGR00293	TIGR00293	TIGR00293: prefoldin, alpha subunit
+TIGR00307.hmm	TIGR00307	TIGR00307	eS8: ribosomal protein eS8
+TIGR00308.hmm	TIGR00308	TIGR00308	TRM1: N2,N2-dimethylguanosine tRNA methyltransferase
+TIGR00323.hmm	TIGR00323	TIGR00323	eIF-6: putative translation initiation factor eIF-6
+TIGR00324.hmm	TIGR00324	TIGR00324	endA: tRNA-intron lyase
+TIGR00335.hmm	TIGR00335	TIGR00335	primase_sml: putative DNA primase, eukaryotic-type, small subunit
+TIGR00336.hmm	TIGR00336	TIGR00336	pyrE: orotate phosphoribosyltransferase
+TIGR00337.hmm	TIGR00337	TIGR00337	PyrG: CTP synthase
+TIGR00373.hmm	TIGR00373	TIGR00373	TIGR00373: transcription factor E
+TIGR00389.hmm	TIGR00389	TIGR00389	glyS_dimeric: glycine--tRNA ligase
+TIGR00392.hmm	TIGR00392	TIGR00392	ileS: isoleucine--tRNA ligase
+TIGR00398.hmm	TIGR00398	TIGR00398	metG: methionine--tRNA ligase
+TIGR00405.hmm	TIGR00405	TIGR00405	KOW_elon_Spt5: transcription elongation factor Spt5
+TIGR00408.hmm	TIGR00408	TIGR00408	proS_fam_I: proline--tRNA ligase
+TIGR00422.hmm	TIGR00422	TIGR00422	valS: valine--tRNA ligase
+TIGR00425.hmm	TIGR00425	TIGR00425	CBF5: putative rRNA pseudouridine synthase
+TIGR00432.hmm	TIGR00432	TIGR00432	arcsn_tRNA_tgt: tRNA-guanine(15) transglycosylase
+TIGR00442.hmm	TIGR00442	TIGR00442	hisS: histidine--tRNA ligase
+TIGR00448.hmm	TIGR00448	TIGR00448	rpoE: DNA-directed RNA polymerase
+TIGR00456.hmm	TIGR00456	TIGR00456	argS: arginine--tRNA ligase
+TIGR00458.hmm	TIGR00458	TIGR00458	aspS_nondisc: aspartate--tRNA(Asn) ligase
+TIGR00463.hmm	TIGR00463	TIGR00463	gltX_arch: glutamate--tRNA ligase
+TIGR00468.hmm	TIGR00468	TIGR00468	pheS: phenylalanine--tRNA ligase, alpha subunit
+TIGR00471.hmm	TIGR00471	TIGR00471	pheT_arch: phenylalanine--tRNA ligase, beta subunit
+TIGR00490.hmm	TIGR00490	TIGR00490	aEF-2: translation elongation factor aEF-2
+TIGR00491.hmm	TIGR00491	TIGR00491	aIF-2: translation initiation factor aIF-2
+TIGR00501.hmm	TIGR00501	TIGR00501	met_pdase_II: methionine aminopeptidase, type II
+TIGR00521.hmm	TIGR00521	TIGR00521	coaBC_dfp: phosphopantothenoylcysteine decarboxylase / phosphopantothenate--cysteine ligase
+TIGR00522.hmm	TIGR00522	TIGR00522	dph5: diphthine synthase
+TIGR00549.hmm	TIGR00549	TIGR00549	mevalon_kin: mevalonate kinase
+TIGR00658.hmm	TIGR00658	TIGR00658	orni_carb_tr: ornithine carbamoyltransferase
+TIGR00670.hmm	TIGR00670	TIGR00670	asp_carb_tr: aspartate carbamoyltransferase
+TIGR00729.hmm	TIGR00729	TIGR00729	TIGR00729: ribonuclease HII
+TIGR00936.hmm	TIGR00936	TIGR00936	ahcY: adenosylhomocysteinase
+TIGR00982.hmm	TIGR00982	TIGR00982	uS12_E_A: ribosomal protein uS12
+TIGR01008.hmm	TIGR01008	TIGR01008	uS3_euk_arch: ribosomal protein uS3
+TIGR01012.hmm	TIGR01012	TIGR01012	uS2_euk_arch: ribosomal protein uS2
+TIGR01018.hmm	TIGR01018	TIGR01018	uS4_arch: ribosomal protein uS4
+TIGR01020.hmm	TIGR01020	TIGR01020	uS5_euk_arch: ribosomal protein uS5
+TIGR01025.hmm	TIGR01025	TIGR01025	uS19_arch: ribosomal protein uS19
+TIGR01028.hmm	TIGR01028	TIGR01028	uS7_euk_arch: ribosomal protein uS7
+TIGR01038.hmm	TIGR01038	TIGR01038	uL22_arch_euk: ribosomal protein uL22
+TIGR01046.hmm	TIGR01046	TIGR01046	uS10_euk_arch: ribosomal protein uS10
+TIGR01052.hmm	TIGR01052	TIGR01052	top6b: DNA topoisomerase VI, B subunit
+TIGR01060.hmm	TIGR01060	TIGR01060	eno: phosphopyruvate hydratase
+TIGR01077.hmm	TIGR01077	TIGR01077	L13_A_E: ribosomal protein uL13
+TIGR01080.hmm	TIGR01080	TIGR01080	rplX_A_E: ribosomal protein uL24
+TIGR01213.hmm	TIGR01213	TIGR01213	pseudo_Pus10arc: tRNA pseudouridine(54/55) synthase
+TIGR01309.hmm	TIGR01309	TIGR01309	uL30_arch: ribosomal protein uL30
+TIGR01952.hmm	TIGR01952	TIGR01952	nusA_arch: NusA family KH domain protein, archaeal
+TIGR02076.hmm	TIGR02076	TIGR02076	pyrH_arch: putative uridylate kinase
+TIGR02153.hmm	TIGR02153	TIGR02153	gatD_arch: glutamyl-tRNA(Gln) amidotransferase, subunit D
+TIGR02236.hmm	TIGR02236	TIGR02236	recomb_radA: DNA repair and recombination protein RadA
+TIGR02258.hmm	TIGR02258	TIGR02258	2_5_ligase: 2'-5' RNA ligase
+TIGR02338.hmm	TIGR02338	TIGR02338	gimC_beta: prefoldin, beta subunit
+TIGR02389.hmm	TIGR02389	TIGR02389	RNA_pol_rpoA2: DNA-directed RNA polymerase, subunit A''
+TIGR02390.hmm	TIGR02390	TIGR02390	RNA_pol_rpoA1: DNA-directed RNA polymerase subunit A'
+TIGR02651.hmm	TIGR02651	TIGR02651	RNase_Z: ribonuclease Z
+TIGR03626.hmm	TIGR03626	TIGR03626	L3_arch: ribosomal protein uL3
+TIGR03627.hmm	TIGR03627	TIGR03627	uS9_arch: ribosomal protein uS9
+TIGR03628.hmm	TIGR03628	TIGR03628	arch_S11P: ribosomal protein uS11
+TIGR03629.hmm	TIGR03629	TIGR03629	uS13_arch: ribosomal protein uS13
+TIGR03636.hmm	TIGR03636	TIGR03636	uL23_arch: ribosomal protein uL23
+TIGR03653.hmm	TIGR03653	TIGR03653	uL6_arch: ribosomal protein uL6
+TIGR03665.hmm	TIGR03665	TIGR03665	arCOG04150: arCOG04150 universal archaeal KH domain protein
+TIGR03670.hmm	TIGR03670	TIGR03670	rpoB_arch: DNA-directed RNA polymerase subunit B
+TIGR03671.hmm	TIGR03671	TIGR03671	cca_archaeal: CCA-adding enzyme
+TIGR03672.hmm	TIGR03672	TIGR03672	rpl4p_arch: 50S ribosomal protein uL4
+TIGR03673.hmm	TIGR03673	TIGR03673	uL14_arch: 50S ribosomal protein uL14
+TIGR03674.hmm	TIGR03674	TIGR03674	fen_arch: flap structure-specific endonuclease
+TIGR03677.hmm	TIGR03677	TIGR03677	eL8_ribo: ribosomal protein eL8
+TIGR03680.hmm	TIGR03680	TIGR03680	eif2g_arch: translation initiation factor 2, gamma subunit
+TIGR03683.hmm	TIGR03683	TIGR03683	A-tRNA_syn_arch: alanine--tRNA ligase
+TIGR03684.hmm	TIGR03684	TIGR03684	arCOG00985: arCOG04150 universal archaeal PUA-domain protein
+TIGR03722.hmm	TIGR03722	TIGR03722	arch_KAE1: universal archaeal protein Kae1
