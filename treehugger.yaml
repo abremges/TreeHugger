@@ -1,0 +1,12 @@
+name: treehugger
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - prodigal
+  - hmmer
+  - seqkit
+  - muscle
+  - trimal
+  - fasttree
