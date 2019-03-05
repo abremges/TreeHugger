@@ -1,5 +1,5 @@
 #!/usr/bin/env nextflow
-treehugger_version = 'v0.2'
+treehugger_version = 'v0.3'
 println """
 ▄▄▄█████▓ ██▀███  ▓█████ ▓█████  ██░ ██  █    ██   ▄████   ▄████ ▓█████  ██▀███
 ▓  ██▒ ▓▒▓██ ▒ ██▒▓█   ▀ ▓█   ▀ ▓██░ ██▒ ██  ▓██▒ ██▒ ▀█▒ ██▒ ▀█▒▓█   ▀ ▓██ ▒ ██▒
@@ -13,8 +13,12 @@ println """
                                                 ${treehugger_version?:''}
 """
 
-params.db = "${baseDir}/db/gtdb_bac120"
-params.in = "${baseDir}/data/many"
+// TODO Expose command-line options for each tool in TreeHugger
+
+// TODO Provide flags for commonly used marker gene sets
+// amphora2_arc amphora2_bac checkm gtdb_arc122 gtdb_bac120 hug phylosift speci ubcg
+params.db = "${baseDir}/db/hug"
+params.in = "${baseDir}/data/mbarc-26"
 params.x = 'fasta'
 
 
@@ -26,10 +30,9 @@ hmmlist = Channel
     .fromPath("${params.db}/*.hmm")
     .collect()
 
-
+// TODO Optionally skip gene prediction --from-genes
 process predict {
     tag "${genome_id}"
-    publishDir "output/1/${genome_id}"
 
     input:
     set val(genome_id), file(genome_seq) from genomes
@@ -38,8 +41,8 @@ process predict {
     set genome_id, "${genome_id}.genes.faa" into genes
 
     """
-    prodigal -a ${genome_id}.genes.faa -i ${genome_seq}
-    """ // -m -p meta ?
+    prodigal -m -a ${genome_id}.genes.faa -i ${genome_seq}
+    """ // -p meta ?
 }
 
 process search {
@@ -51,91 +54,49 @@ process search {
     each hmm from hmmlist
 
     output:
-    set val("${hmm.baseName}"), genome_id, file(gene_seqs), "${genome_id}.${hmm.baseName}.tbl" into marker_genes
+    set val("${hmm.baseName}"), "${genome_id}.${hmm.baseName}.faa" into marker_genes
 
     """
-    hmmsearch -E 1e-10 --tblout ${genome_id}.${hmm.baseName}.tbl ${hmm} ${gene_seqs} > ${genome_id}.${hmm.baseName}.out
-    """
-}
-
-process extract {
-    tag "${genome_id}, ${marker_id}"
-    publishDir "output/1/${genome_id}"
-
-    input:
-    set val(marker_id), val(genome_id), file(gene_seqs), file(tblout) from marker_genes
-
-    output:
-    set marker_id, "${genome_id}.${marker_id}.faa" into marker_genes_2
-
-    """
-    grep -v "^#" ${tblout} | awk 'FNR == 1 {print \$1}' > gene_id
-    if [ -s gene_id ]
+    hmmsearch -E 1e-10 --tblout ${genome_id}.${hmm.baseName}.tbl ${hmm} ${gene_seqs}
+    grep -v "^#" ${genome_id}.${hmm.baseName}.tbl | awk 'FNR == 1 {print \$1}' > ${genome_id}.${hmm.baseName}.gid
+    if [ -s ${genome_id}.${hmm.baseName}.gid ]
     then
-      seqkit grep -f gene_id ${gene_seqs} | seqkit replace -p '.+' -r "${genome_id} ${marker_id}" > ${genome_id}.${marker_id}.faa
+      seqkit grep -f ${genome_id}.${hmm.baseName}.gid ${gene_seqs} | seqkit replace -p '.+' -r "${genome_id} ${hmm.baseName}" > ${genome_id}.${hmm.baseName}.faa
     else
-      printf ">${genome_id} ${marker_id}\nX\n" > ${genome_id}.${marker_id}.faa
+      printf ">${genome_id} ${hmm.baseName}\nX\n" > ${genome_id}.${hmm.baseName}.faa
     fi
     """
 }
-
-marker_genes_2.groupTuple().set{ gene_blocks }
 
 process align {
     tag "${marker_id}"
     publishDir "output/2"
 
     input:
-    set val(marker_id), file(marker_seqs) from gene_blocks
+    set val(marker_id), file(marker_seqs) from marker_genes.groupTuple()
 
     output:
-    file "${marker_id}.aln" into raw_alignment
+    file "${marker_id}.aln" into alignment
 
     """
     cat ${marker_seqs} | muscle > ${marker_id}.aln
     """ // -maxiters 8 ?
 }
 
-raw_alignment.toSortedList( { a, b -> a.baseName <=> b.baseName } ).set{ alignment_blocks }
-
-process concat {
-    publishDir "output/3"
-
-    input:
-    file alignment_files from alignment_blocks
-
-    output:
-    file "concat.aln" into concat_alignment
-
-    """
-    seqkit concat -w 0 -t protein ${alignment_files} | seqkit replace -s -p X -r - > concat.aln
-    """
-}
-
-process trim {
-    publishDir "output/3"
-
-    input:
-    file alignment from concat_alignment
-
-    output:
-    file "trimmed.aln" into trimmed_alignment
-
-    """
-    trimal -automated1 -in ${alignment} > trimmed.aln
-    """ // -keepseqs ?
-}
-
 process build {
     publishDir "output/3"
 
     input:
-    file alignment from trimmed_alignment
+    file alignment_files from alignment.toSortedList( { a, b -> a.baseName <=> b.baseName } )
 
     output:
-    file "tree.nwk" into tree
+    file "concat.aln"
+    file "trimmed.aln"
+    file "tree.nwk"
 
     """
-    fasttree -lg -gamma ${alignment} > tree.nwk
-    """
+    seqkit concat -w 0 -t protein ${alignment_files} | seqkit replace -s -p X -r - > concat.aln
+    trimal -automated1 -in concat.aln > trimmed.aln
+    fasttree -lg -gamma trimmed.aln > tree.nwk
+    """ // trimal -keepseqs ?
 }
