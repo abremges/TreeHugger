@@ -35,6 +35,7 @@ hmmlist = Channel
     .collect()
 
 // TODO Optionally skip gene prediction --from-genes
+params.prodigal = '-m' // -p meta ?
 process predict {
     tag "${genome_id}"
 
@@ -45,10 +46,11 @@ process predict {
     set genome_id, "${genome_id}.genes.faa" into genes
 
     """
-    prodigal -m -a ${genome_id}.genes.faa -i ${genome_seq}
-    """ // -p meta ?
+    prodigal ${params.prodigal} -a ${genome_id}.genes.faa -i ${genome_seq}
+    """
 }
 
+params.hmmsearch = '-E 1e-10'
 process search {
     tag "${genome_id}, ${hmm.baseName}"
     publishDir "output/1/${genome_id}"
@@ -62,7 +64,7 @@ process search {
     set val("${hmm.baseName}"), "${genome_id}.${hmm.baseName}.faa" into marker_genes
 
     """
-    hmmsearch -E 1e-10 --tblout ${genome_id}.${hmm.baseName}.tbl ${hmm} ${gene_seqs}
+    hmmsearch ${params.hmmsearch} --tblout ${genome_id}.${hmm.baseName}.tbl ${hmm} ${gene_seqs}
     grep -v "^#" ${genome_id}.${hmm.baseName}.tbl | awk 'FNR == 1 {print \$1}' > ${genome_id}.${hmm.baseName}.gid
     if [ -s ${genome_id}.${hmm.baseName}.gid ]
     then
@@ -73,6 +75,7 @@ process search {
     """
 }
 
+params.muscle = '-maxiters 8'
 process align {
     tag "${marker_id}"
     publishDir "output/2"
@@ -84,10 +87,12 @@ process align {
     file "${marker_id}.aln" into alignment
 
     """
-    cat ${marker_seqs} | muscle > ${marker_id}.aln
-    """ // -maxiters 8 ?
+    cat ${marker_seqs} | muscle ${params.muscle} > ${marker_id}.aln
+    """
 }
 
+params.trimal = '-automated1' // -keepseqs ?
+params.fasttree = '-lg -gamma'
 process build {
     publishDir "output/3"
 
@@ -101,7 +106,7 @@ process build {
 
     """
     seqkit concat -w 0 -t protein ${alignment_files} | seqkit replace -s -p X -r - > concat.aln
-    trimal -automated1 -in concat.aln > trimmed.aln
-    fasttree -lg -gamma trimmed.aln > tree.nwk
-    """ // trimal -keepseqs ?
+    trimal ${params.trimal} -in concat.aln > trimmed.aln
+    fasttree ${params.fasttree} trimmed.aln > tree.nwk
+    """
 }
