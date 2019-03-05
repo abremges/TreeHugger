@@ -18,13 +18,17 @@ println """
 // TODO Provide flags for commonly used marker gene sets
 // amphora2_arc amphora2_bac checkm gtdb_arc122 gtdb_bac120 hug phylosift speci ubcg
 params.db = "${baseDir}/db/hug"
-params.in = "${baseDir}/data/mbarc-26"
+params.in = "${baseDir}/data/one"
 params.x = 'fasta'
 
 
 genomes = Channel
     .fromPath("${params.in}/*.${params.x}")
     .map { file -> [file.baseName, file] }
+
+datadir = Channel
+    .fromPath("${params.db}", type: 'dir')
+    .first()
 
 hmmlist = Channel
     .fromPath("${params.db}/*.hmm")
@@ -52,6 +56,7 @@ process search {
     input:
     set val(genome_id), file(gene_seqs) from genes
     each hmm from hmmlist
+    file datadir // Docker workaround
 
     output:
     set val("${hmm.baseName}"), "${genome_id}.${hmm.baseName}.faa" into marker_genes
