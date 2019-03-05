@@ -13,29 +13,53 @@ println """
                                                 ${treehugger_version?:''}
 """
 
-// TODO Expose command-line options for each tool in TreeHugger
+// Marker gene folder
+params.custom = ''
+if (params.custom) {
+    params.marker = 'custom'
+    db = "${params.custom}"
+} else {
+    params.marker = 'hug'
+    if (params.marker[0] == 'h')
+        db = "${baseDir}/db/hug"
+    else if (params.marker == 'amphora2_arc')
+        db = "${baseDir}/db/amphora2_arc"
+    else if (params.marker[0] == 'a')
+        db = "${baseDir}/db/amphora2_bac"
+    else if (params.marker[0] == 'p')
+        db = "${baseDir}/db/phylosift"
+    else if (params.marker[0] == 's')
+        db = "${baseDir}/db/speci"
+    else if (params.marker[0] == 'c')
+        db = "${baseDir}/db/checkm"
+    else if (params.marker[0] == 'u')
+        db = "${baseDir}/db/ubcg"
+    else if (params.marker == 'gtdb_arc122' || params.marker == 'gtdb_arc')
+        db = "${baseDir}/db/gtdb_arc122"
+    else if (params.marker[0] == 'g')
+        db = "${baseDir}/db/gtdb_bac120"
+}
+datadir = Channel
+    .fromPath("${db}", type: 'dir')
+    .first()
+hmmlist = Channel
+    .fromPath("${db}/*.hmm")
+    .collect()
+println("[config] Marker gene folder:\n${params.marker} - ${db}")
 
-// TODO Provide flags for commonly used marker gene sets
-// amphora2_arc amphora2_bac checkm gtdb_arc122 gtdb_bac120 hug phylosift speci ubcg
-params.db = "${baseDir}/db/hug"
-params.in = "${baseDir}/data/one"
+// Input folder (and file extension)
+params.in = 'input'
 params.x = 'fasta'
 
-
-genomes = Channel
+(genomes, input) = Channel
     .fromPath("${params.in}/*.${params.x}")
     .map { file -> [file.baseName, file] }
-
-datadir = Channel
-    .fromPath("${params.db}", type: 'dir')
-    .first()
-
-hmmlist = Channel
-    .fromPath("${params.db}/*.hmm")
-    .collect()
+    .into(2)
+println("[config] Input genomes: ")
+input.println { it[0] + " - " + it[1] }
 
 // TODO Optionally skip gene prediction --from-genes
-params.prodigal = '-m' // -p meta ?
+params.prodigal = '-m -p meta'
 process predict {
     tag "${genome_id}"
 
@@ -75,7 +99,7 @@ process search {
     """
 }
 
-params.muscle = '-maxiters 8'
+params.muscle = '-maxiters 16' // -maxiters 8
 process align {
     tag "${marker_id}"
     publishDir "output/2"
@@ -91,7 +115,7 @@ process align {
     """
 }
 
-params.trimal = '-automated1' // -keepseqs ?
+params.trimal = '-automated1' // -keepseqs
 params.fasttree = '-lg -gamma'
 process build {
     publishDir "output/3"
