@@ -1,5 +1,5 @@
 #!/usr/bin/env nextflow
-treehugger_version = 'v0.3'
+treehugger_version = 'v0.3.1'
 println """
 ▄▄▄█████▓ ██▀███  ▓█████ ▓█████  ██░ ██  █    ██   ▄████   ▄████ ▓█████  ██▀███
 ▓  ██▒ ▓▒▓██ ▒ ██▒▓█   ▀ ▓█   ▀ ▓██░ ██▒ ██  ▓██▒ ██▒ ▀█▒ ██▒ ▀█▒▓█   ▀ ▓██ ▒ ██▒
@@ -10,34 +10,36 @@ println """
     ░      ░▒ ░ ▒░ ░ ░  ░ ░ ░  ░ ▒ ░▒░ ░░░▒░ ░ ░   ░   ░   ░   ░  ░ ░  ░  ░▒ ░ ▒░
   ░        ░░   ░    ░      ░    ░  ░░ ░ ░░░ ░ ░ ░ ░   ░ ░ ░   ░    ░     ░░   ░
             ░        ░  ░   ░  ░ ░  ░  ░   ░           ░       ░    ░  ░   ░
-                                                ${treehugger_version?:''}
+                                               ${treehugger_version?:''}
 """
 
-// Marker gene folder
+// Marker gene set
 params.custom = ''
 if (params.custom) {
     params.marker = 'custom'
     db = "${params.custom}"
 } else {
     params.marker = 'hug'
-    if (params.marker[0] == 'h')
-        db = "${baseDir}/db/hug"
-    else if (params.marker == 'amphora2_arc')
-        db = "${baseDir}/db/amphora2_arc"
-    else if (params.marker[0] == 'a')
-        db = "${baseDir}/db/amphora2_bac"
-    else if (params.marker[0] == 'p')
+    db = "${baseDir}/db/hug"
+    if (params.marker =~ /^a/) {
+        if (params.marker =~ /arc/)
+            db = "${baseDir}/db/amphora2_arc"
+        else
+            db = "${baseDir}/db/amphora2_bac"
+    } else if (params.marker =~ /^p/)
         db = "${baseDir}/db/phylosift"
-    else if (params.marker[0] == 's')
+    else if (params.marker =~ /^s/)
         db = "${baseDir}/db/speci"
-    else if (params.marker[0] == 'c')
+    else if (params.marker =~ /^c/)
         db = "${baseDir}/db/checkm"
-    else if (params.marker[0] == 'u')
+    else if (params.marker =~ /^u/)
         db = "${baseDir}/db/ubcg"
-    else if (params.marker == 'gtdb_arc122' || params.marker == 'gtdb_arc')
-        db = "${baseDir}/db/gtdb_arc122"
-    else if (params.marker[0] == 'g')
-        db = "${baseDir}/db/gtdb_bac120"
+    else if (params.marker =~ /^g/) {
+        if (params.marker =~ /arc/)
+            db = "${baseDir}/db/gtdb_arc122"
+        else
+            db = "${baseDir}/db/gtdb_bac120"
+    }
 }
 datadir = Channel
     .fromPath("${db}", type: 'dir')
@@ -45,12 +47,11 @@ datadir = Channel
 hmmlist = Channel
     .fromPath("${db}/*.hmm")
     .collect()
-println("[config] Marker gene folder:\n${params.marker} - ${db}")
+println("[config] Marker gene set:\n${params.marker} - ${db}")
 
 // Input folder (and file extension)
 params.in = 'input'
 params.x = 'fasta'
-
 (genomes, input) = Channel
     .fromPath("${params.in}/*.${params.x}")
     .map { file -> [file.baseName, file] }
